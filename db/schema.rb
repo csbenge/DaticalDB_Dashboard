@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212210654) do
+ActiveRecord::Schema.define(version: 20141213170704) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20141212210654) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "credentials", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "schema_id"
+    t.boolean  "snapshot"
+    t.boolean  "status"
+    t.boolean  "forecast"
+    t.boolean  "deploy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "credentials", ["schema_id"], name: "index_credentials_on_schema_id"
+  add_index "credentials", ["user_id"], name: "index_credentials_on_user_id"
 
   create_table "environments", force: true do |t|
     t.string   "name"

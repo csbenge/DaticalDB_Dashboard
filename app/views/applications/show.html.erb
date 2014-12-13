@@ -34,7 +34,7 @@
                 <th>ChangeLog Table</th>
                 <th>Lastest Deployed Change</th>
                 <th>Lastest Deployed Date</th>
-                <th style="text-align:center;">Actions</th>
+                <th style="text-align:left;">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -49,17 +49,32 @@
                 <td><%= schema.changelogtable %></td>
                 <td><%= get_Schema_Deployment_Latest_ChangeSet(schema) %></td>
                 <td><%= get_Schema_Deployment_Latest_ExecDate(schema).strftime("%Y-%m-%d %H:%M") %></td>
-                <td style="text-align:center;">
+                <td style="text-align:left;">
 
-                    <%= link_to schema, class: "btn btn-gray btn-xs c_btnlink" do %>
-                        <i class="fa fa-check-square"> Forecast</i>
-                    <% end %>
-                    <%= link_to schema, class: "btn btn-gray btn-xs c_btnlink" do %>
-                        <i class="fa fa-arrow-circle-right"> Deploy</i>
-                    <% end %>
+                  <% if user_can_status(schema.id) %>
                     <%= link_to database_change_logs_path(:id => schema.id, :schemaName => schema.name, :databaseChangeLogTable => schema.changelogtable), class: "btn btn-gray btn-xs c_btnlink" do %>
                         <i class="fa fa-bars"> Status</i>
                     <% end %>
+                  <% end %>
+
+                  <% if user_can_snapshot(schema.id) %>
+                    <%= link_to database_change_logs_path(:id => schema.id, :schemaName => schema.name, :databaseChangeLogTable => schema.changelogtable), class: "btn btn-gray btn-xs c_btnlink" do %>
+                        <i class="fa fa-download"> Snapshot</i>
+                    <% end %>
+                  <% end %>
+
+                  <% if user_can_forecast(schema.id) %>
+                    <%= link_to schema, class: "btn btn-gray btn-xs c_btnlink" do %>
+                        <i class="fa fa-check-square"> Forecast</i>
+                    <% end %>
+                  <% end %>
+
+                  <% if user_can_deploy(schema.id) %>
+                    <%= link_to schema, class: "btn btn-gray btn-xs c_btnlink" do %>
+                        <i class="fa fa-arrow-circle-right"> Deploy</i>
+                    <% end %>
+                  <% end %>
+                   
                     
                 </td> 
               </tr>

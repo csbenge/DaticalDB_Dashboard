@@ -29,5 +29,61 @@ module ApplicationsHelper
       return schemaList.chop.chop
     end
   end
+
+  def user_can_status(schema_id)
+    credentials = Credential.where("schema_id = '#{schema_id}' AND user_id = '#{session[:user_id]}'")
+    if credentials == nil 
+      return false
+    end
+    credentials.each do |credential|
+      if credential.status == true
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  def user_can_snapshot(schema_id)
+    credentials = Credential.where("schema_id = '#{schema_id}' AND user_id = '#{session[:user_id]}'")
+    if credentials == nil 
+      return false
+    end
+    credentials.each do |credential|
+      if credential.snapshot == true
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  def user_can_forecast(schema_id)
+    credentials = Credential.where("schema_id = '#{schema_id}' AND user_id = '#{session[:user_id]}'")
+    if credentials == nil 
+      return false
+    end
+    credentials.each do |credential|
+      if credential.forecast == true
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  def user_can_deploy(schema_id)
+    credentials = Credential.where("schema_id = '#{schema_id}' AND user_id = '#{session[:user_id]}'")
+    if credentials == nil 
+      return false
+    end
+    credentials.each do |credential|
+      if credential.deploy == true
+        return true
+      else
+        return false
+      end
+    end
+  end
   
 end

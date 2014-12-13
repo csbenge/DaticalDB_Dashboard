@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :credentials
+
   get 'sessions/new'
 
   resources :applications

@@ -1,0 +1,12 @@
+<div class="panel panel-gray">
+  <div class="panel-heading">
+    <i class="fa fa-user fa-2x"></i><b> <big><big>Add User</big></big></b>
+  </div>  
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'Users', users_path %></li>
+  <li class="active"><%= link_to 'Add User', new_user_path %></li>
+</ul>
+
+<%= render 'form' %>

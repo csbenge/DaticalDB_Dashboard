@@ -1,0 +1,34 @@
+<%= form_for(:session, url: login_path, html: {class: "form-horizontal"}) do |f| %>
+
+<div class="panel panel-primary">
+ <div class="panel-heading">
+    <i class="fa fa-user fa-2x"></i><big><big> Log In:</big></big>
+  </div>  
+</div>
+
+<div class="well">
+
+	<div class="field form-group">
+    <%= f.label :'Email', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :'Password', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+
+   <div class="actions form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <%= f.submit 'Log In', :class => 'btn btn-primary btn-xs' %>
+    </div>
+  </div>
+  </form>
+
+</div>
+
+<% end %>

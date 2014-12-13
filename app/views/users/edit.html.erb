@@ -1,0 +1,14 @@
+<div class="panel panel-gray">
+  <div class="panel-heading">
+    <i class="fa fa-database fa-2x"></i><big><big> Edit User:<b> <%= @user.name %></b></big></big>
+  </div>  
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'Users', users_path %></li>
+  <li><%= link_to 'Add Users', new_user_path %></li>
+</ul>
+
+<%= render 'form' %>
+
+

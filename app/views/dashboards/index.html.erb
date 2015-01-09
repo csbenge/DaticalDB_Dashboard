@@ -135,7 +135,7 @@
 					<tr class="success">
 					<% end %>
 						<td>
-							<%= link_to schema, database_change_logs_path(:schemaName => schema, :databaseChangeLogTable => changelogtable), class: 'c_textlink' %>
+              <%= link_to schema, database_change_logs_path(:id => schema_id, :schemaName => schema, :databaseChangeLogTable => changelogtable), class: 'c_textlink' %>
 						</td>
 						<td><%= changeSet %></td>
 						<td><%= dataexecuted.strftime("%Y-%m-%d %H:%M") %></td>
